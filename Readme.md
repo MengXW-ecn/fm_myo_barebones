@@ -1,5 +1,7 @@
 # Physical Training Helper Based on Electromyography and Acceleration-orientation Data
 
+## Authors: Yanchen CHENG, Xiangwei MENG
+
 ## Abstract
 With the development and progress of society, people are more and more inclined to exercise at home, or indoor sports. When you exercise alone or at home, you need an objective feedback to track your performance and point out if you exercise correctly. Among the devices that have helped us solve this problem are step counters, as well as heartbeat and blood pressure sensors. Now, one of the methods we have developed to analyze movement is EMG. It is through specific muscle EMG signal processing, intuitive analysis of your movement. EMG signal is produced by muscle contraction, which can be analyzed to get instructions to the computer. The technique is also used in prosthetics and rehabilitation.
 
