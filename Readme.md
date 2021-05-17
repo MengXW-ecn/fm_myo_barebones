@@ -14,6 +14,7 @@ EMG permits to estimate the level of muscle contraction and therefore provide su
 - Python 3
 - myo-python
 - numpy
+- scikit-learn
 - scipy
 - matplotlib
 - keyboard
@@ -42,6 +43,13 @@ The surface EMG signal can be measured with wet electrodes and dry electrodes. C
 When the muscle is stimulated, the Mu is activated when the input stimulation reaches its own recruitment threshold. According to the experimental statistics, the threshold RTE of Mu in biceps brachii obeys the exponential distribution, as shown in the formula.
 <div align=center><img width=200" src="pictures/emg04.png"/></div> 
 
+### MAV
+MAV(mean absolute value) describes the proportional control of the force and speed feedback power hook, the speed control when allowing free movement and the force control when grasping. The features used are amplified, rectified and smoothed electrode signals. The MAV of two pairs of electrodes were compared, and the differential signal was used to turn on and off the prosthetic hand. In order to reduce the output noise, a backlash generator is introduced.
+In addition, Fougner proposed a linear mapping function. The angle estimation is tested and compared with MLP network. A much simpler linear mapping function is almost as good as MLP networks. Together with ANN, support vector machine (SVM), locally weighted projection regression (LWPR) and physiology based model (PBM), Ziai tested a similar solution (called ordinary least squares linear regression) for torque estimation. Compared with other more complex estimators, linear mapping has the characteristics of short training time and good effect.
+An important part of the training of prosthetic control system is to combine the training data sets in an appropriate way. We have seen that in the clear classification version of pattern recognition, the composition of training data is very important for robustness. In the case of proportional control, there is no reason to believe that training data is not so important. Of course, the training set of proportional control should contain continuous movement, that is, not just rest and maximum contraction. If only the on / off action is trained, the system may finally realize the on-off control.
+For the system with proportional control at the same time, unless some interpolation method is used, the training data must contain simultaneous motion.
+<div align=center><img width=400" src="pictures/mav01.png"/></div> 
+
 ### IMU signal acquisition system
 1.IMU signal acquisition system takes arm and FPGA as the core, realizes high-precision time through GPS and high stability crystal, collects real-time data of 3-axis accelerometer and 3-axis gyroscope through high-precision AD conversion module, and finally outputs high-precision sensor data with time stamp, which lays a solid foundation for the realization of POS system. 
 The main functions of IMU signal acquisition system are high-precision time acquisition and data acquisition of gyroscope and accelerometer. The system combines GPS, high stability quartz crystal, FPGA as the core, combined with effective algorithm to produce high-precision time (precision up to ±10uS). At the same time, the output signals of gyroscope (three-axis), accelerometer (three-axis) and other sensors are collected by FPGA and AD conversion module. The gyroscope and accelerometer are digitized and filtered. Finally, the data with time stamp and output of each sensor are quickly uploaded to the upper computer according to the set time interval for further processing.
@@ -49,3 +57,6 @@ The main functions of IMU signal acquisition system are high-precision time acqu
 2.Planning: The whole hardware system is composed of arm, FPGA, three-axis gyroscope, three-axis accelerometer, GPS and other sensor units, power management module, flash and SDRAM, and single board computer. FPGA mainly receives the digital signals of gyroscope and accelerometer after AD conversion, encoder and GPS signals to complete the output data acquisition of high-precision clock and sensor. Arm stores the data signal collected by FPGA and receives the high-precision time pulse output by FPGA. After stamping the sensor signal with high-precision time stamp, it quickly uploads it to the single board computer through USB or UART. The single board computer outputs the position, time and attitude information after a series of processing such as Kalman filter.
 <div align=center><img width=400" src="pictures/imu01.png"/></div> 
 IMU is mostly used in motion control equipment, such as cars and robots. It is also used in the situation of precise displacement calculation with attitude, such as inertial navigation equipment of submarine, aircraft, missile and spacecraft. Therefore, in general, IMU should be installed on the center of gravity of the object to be measured.
+
+## Architecture
+<div align=center><img width=400" src="pictures/flowchart.png"/></div> 
