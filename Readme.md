@@ -59,4 +59,4 @@ The main functions of IMU signal acquisition system are high-precision time acqu
 IMU is mostly used in motion control equipment, such as cars and robots. It is also used in the situation of precise displacement calculation with attitude, such as inertial navigation equipment of submarine, aircraft, missile and spacecraft. Therefore, in general, IMU should be installed on the center of gravity of the object to be measured.
 
 ## Architecture
-<div align=center><img width=400" src="pictures/flowchart.png"/></div> 
+<div align=center><img width=600" src="pictures/flowchart.png"/></div> 
