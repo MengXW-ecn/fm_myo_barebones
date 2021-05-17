@@ -60,3 +60,56 @@ IMU is mostly used in motion control equipment, such as cars and robots. It is a
 
 ## Architecture
 <div align=center><img width=600" src="pictures/flowchart.png"/></div> 
+
+## Examples
+### Installation and setup
+#### 1. Install Anaconda. 
+Download a Python 3.7 Anaconda from the [official site](https://www.anaconda.com/products/individual) and install it. Use default installation options.
+#### 2. Install MyoConnect. 
+Install MyoConnect from the provided setup file: [Windows](https://www.dropbox.com/s/2dfv0gpqq0c2qrp/Myo_Connect_Installer.exe?dl=0), [MacOS](https://www.dropbox.com/s/ua43z9n2rib4hv3/MyoConnect.dmg?dl=0).
+To connect and use the armband, please follow the official tutorial within MyoConnect.
+Later, to set up MyoConnect for a comfortable work, run it, then right-click on its icon in task bar, select **Preferences**, and uncheck all options in all tabs. Then, right-click on icon again, select **Application Manager** and uncheck all options here too.
+#### 3. Create a new python 3.8 virtual environment (explained for Anaconda).
+On Windows, open **anaconda prompt**. On MacOS, run **Terminal**. Run the following commands and accept the changes:
+```
+conda create --name myo python=3.8 pip
+```
+Now activate the environment that we have just created (its name is '**myo**'):
+```
+conda activate myo
+```
+Note: please remember that any time you want to run this project from a new command/terminal window, you need to activate this environment again.
+#### 4. Install *myo-python* package
+Install it from from our fork on Github. To do so, in command line, with 'myo' environment activated, run:
+```
+pip install https://github.com/smetanadvorak/myo-python/tarball/master
+```
+#### 5. Setup the *fm_myo_barebones* package
+[Download](https://github.com/smetanadvorak/fm_myo_barebones/tarball/master)
+this project and put it in an appropriate directory on your disk. In command window, navigate to this project's folder and run:
+```
+pip install -e .
+```
+#### 6. Set up MyoConnect
+This should be done only once at the beginning of your working session:
+- Insert MYO's Bluetooth dongle in your USB port.
+- Run MyoConnect, right-click on its icon in task bar, select **Armband Manager** ....
+- Approach the dongle with your armband. It should automatically get paired with MyoConnect.
+- In MyoConnect, press 'Ping' to make sure that it is not connected to some other armband nearby. Your armband should vibrate in response to the ping.
+
+#### 7. Setup the environment and run the code
+Open **Anaconda Prompt** (Windows) or **Terminal** (MacOS) and activate the 'myo' environment:
+```
+conda activate myo
+```
+Navigate to the folder with this package, then to ./examples/streaming and run a test script:
+```
+python streaming.py
+```
+If everything is installed correctly, a matplotlib figure should appear with the EMG signals being traced in real time. This and other examples can be stopped by either pressing **ctrl-c** (MacOS) or **shift-c** (Windows).phy-based Mouse Pointer Control with Python
+
+### Run the codes
+Back to this folder,
+```
+python mav.py
+```
